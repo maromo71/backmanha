@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Prateleira {
-    List<Vinil> discos;
+    private List<Vinil> discos;
 
     public Prateleira(){
         //Iniciar a prateleira com uma colecao vazia

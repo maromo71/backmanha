@@ -29,15 +29,12 @@ public class GerenciarColecao {
     public void execCadastrar(){
         //Cadastrar um novo vinil a nossa colecao
         Scanner sc = new Scanner(System.in);
-        String titulo, artista;
-        int ano;
-        EstadoDeConservacao estado;
         System.out.println("Digite o titulo do vinil a ser cadastrado: ");
-        titulo = sc.nextLine();
+        String titulo = sc.nextLine();
         System.out.println("Digite o nome do artista: ");
-        artista = sc.nextLine();
+        String artista = sc.nextLine();
         System.out.println("Digite o ano do Vinil");
-        ano = Integer.parseInt(sc.nextLine());
+        int ano = Integer.parseInt(sc.nextLine());
         System.out.println("Digite o estado de conserva");
         System.out.println("1. Novo");
         System.out.println("2. Excelente");
@@ -45,7 +42,7 @@ public class GerenciarColecao {
         System.out.println("4. Raro");
         System.out.println("5. Danificado");
         int opcao = Integer.parseInt(sc.nextLine());
-        estado = switch (opcao){
+        EstadoDeConservacao estado = switch (opcao){
             case 2 -> EstadoDeConservacao.EXCELENTE;
             case 3 -> EstadoDeConservacao.USADO;
             case 4-> EstadoDeConservacao.RARO;
@@ -54,7 +51,6 @@ public class GerenciarColecao {
         };
         var vinil = new Vinil(titulo, artista, ano, estado);
         prateleleira.adicionar(vinil);
-
     }
 
     public void execConsultar(){
@@ -76,10 +72,12 @@ public class GerenciarColecao {
     public void execListar(){
         var lista = prateleleira.listarTodos();
         for(Vinil vinil : lista){
+            System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-");
             System.out.println("Disco Titulo: " + vinil.titulo());
             System.out.println("Artista: " + vinil.artista());
             System.out.println("Ano de Producao: " + vinil.ano());
             System.out.println("Estado de Conservacao: " + vinil.estado());
+            System.out.println();
         }
     }
 }
