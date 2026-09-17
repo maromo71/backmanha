@@ -23,4 +23,10 @@ public class UsuarioController {
     public List<Usuario>listar(){
         return repository.findAll();
     }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Usuario listarPorId(@PathVariable("id")Long id){
+        return repository.findById(id).orElse(null);
+    }
 }

@@ -24,7 +24,7 @@ public class DataInitializer implements CommandLineRunner {
         while(continuar){
             System.out.println("\nMenu de Opções");
             System.out.println("1. Cadastrar Usuario..");
-            System.out.println("2. lista Usuarios..");
+            System.out.println("2. listar Usuarios..");
             System.out.println("0. SAIR ");
             System.out.println("Escolha sua opcao: ");
             var opcao = Integer.parseInt(scanner.nextLine());
@@ -35,6 +35,10 @@ public class DataInitializer implements CommandLineRunner {
                 }
                 case 2 -> {
                     listar();
+                    yield true;
+                }
+                case 3 ->{
+                    listarPorId(scanner);
                     yield true;
                 }
                 case 0 -> {
@@ -67,6 +71,15 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println("Lista de Usuarios do Banco: ");
             usuarios.forEach(System.out::println);
             System.out.println("----------------------------");
+        }
+    }
+
+    public void listarPorId(Scanner scanner){
+        System.out.println("Digite o id do usuario a procurar: ");
+        Long id = Long.parseLong(scanner.nextLine());
+        var usuario = repository.findById(id);
+        if (usuario != null){
+            System.out.println("Usuario: " + usuario);
         }
     }
 
